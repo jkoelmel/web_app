@@ -1,0 +1,23 @@
+<div class="site-content-left centered">
+    <img src="public/images/camera-map.jpg" alt="Camera on map">
+</div>
+
+<div class="site-content-right">
+    <form id="login" action="/users/login" method="POST" enctype="application/x-www-form-urlencoded">
+        <div id="flash-message">
+            {{#if (emptyObject messages)}}
+                <div>{{messages.error}}</div>
+            {{/if}}
+        </div><br/>
+        <label>Username:</label>
+        <input placeholder="Username" type="text" id="username" name="username" required><br/><br/>
+        <label>Password:&nbsp</label>
+        <input placeholder="Password" type="password" id="password" name="password" required><br/>
+        <input class="check" id="checkbox" type="checkbox">Show Password<br/><br/>
+        <input id="submit" type="Submit" value="Submit"><br/><br/>
+        <a href="forgotpwd" target="_blank">Forgot Password?</a><br/><br/>
+        <div>Don't have an account?&nbsp
+            <a href="registration">Sign Up</a><br/><br/></div>
+    </form>
+    <script src="public/js/forms.js"></script>
+</div>

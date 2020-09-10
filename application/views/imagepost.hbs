@@ -1,0 +1,70 @@
+<div class="site-content">
+    <div><a id="back" href="/">Back</a></div><br/><br/>
+    <fieldset id="post">
+        <legend>Title: {{currentPost.title}}</legend>
+        Posted by: {{currentPost.username}}<br/><br/>
+        On: {{currentPost.created}}<br/><br/>
+        Description: {{currentPost.description}}<br/><br/>
+        <img class="image" src="/{{currentPost.photopath}}" alt=""><br/>
+    </fieldset><br/>
+    {{#if logged}}
+    <fieldset class="comments">
+        <legend>Comments:</legend>
+        {{#if (emptyObject messages)}}
+            <div>{{messages.error}}</div>
+        {{/if}}
+        <div id="comments">
+            {{#each comments}}
+                {{> comment this}}
+            {{/each}}
+        </div>
+
+    </fieldset><br/>
+    <form id="comment-form" action="/users/comment" method="POST" enctype="application/x-www-form-urlencoded">
+    <label for="comment-box">Post a Comment:</label><br/>
+    <textarea placeholder="Comment..." id="comment" name="comment" cols="30"></textarea>
+    <br/><br/><div id="error">Comment cannot be blank</div><br/>
+    <input id="submit" type="Submit" value="Submit"><br/><br/>
+    </form>
+    {{else}}
+        <div>You must be <a href="/login">logged in</a> to comment</div><br/><br/>
+    {{/if}}
+</div>
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('comment').value = '';
+    }
+
+    let back = document.getElementById('back');
+    if (back) {
+        back.onclick = (event) => {
+            let url = document.referrer;
+            //if came from comment success, go home
+            if(url.match('success') != null){
+                url = '/';
+            }
+            //if came from search page, return to results
+            else if (url.match('search') != null) {
+                url = 'javascript:history.back()';
+            }
+            back.setAttribute('href', url);
+
+        }
+    }
+
+    let comment = document.getElementById('comment-form');
+    if(comment) {
+        comment.onsubmit = (event) => {
+            let text = document.getElementById('comment');
+            if(text.value.length == 0){
+                event.preventDefault();
+                document.getElementById('error').style.display = 'block';
+            }
+
+            text.oninput = function () {
+                document.getElementById('error').style.display = 'none';
+            }
+        }
+
+    }
+</script>

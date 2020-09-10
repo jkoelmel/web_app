@@ -1,0 +1,22 @@
+<div class="site-content">
+    <h3>SUCCESS</h3>
+    <br/><br/> Redirecting in 3 seconds
+</div>
+
+<script type="text/javascript">
+    setTimeout(function () {
+        let url = document.referrer;
+        let pattern = /post/i;
+        //if came from postimage send back to upload page
+        if (url == "http://localhost:3000/postimage") {
+            window.location = url;
+        }
+        //if came from comments on a post send back to post
+        else if(url.match(pattern) != null){
+            window.location = url;
+        }
+        else {
+            window.location = '/';
+        }
+    }, 2500)
+</script>

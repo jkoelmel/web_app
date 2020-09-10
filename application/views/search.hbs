@@ -1,0 +1,12 @@
+<div class="columns">
+    <div class="site-content" id="photos">
+        {{#if (emptyObject messages)}}
+            <br/><div id="flash-message">{{messages.error}}</div>
+        {{/if}}
+        <div>
+            {{#each search}}
+                {{> searchresults}}
+            {{/each}}
+        </div>
+    </div>
+</div>

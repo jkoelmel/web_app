@@ -1,0 +1,10 @@
+{{#if (emptyObject messages)}}
+    <div class="site-content">{{messages.error}}</div>
+{{/if}}
+
+<div id="photo-grid" class="site-content">
+    <h3>Recent posts:</h3>
+    {{#each results}}
+        {{> card this}}
+    {{/each}}
+</div>

@@ -1,0 +1,46 @@
+<!--Check user is logged in before allowing direct access to upload page-->
+{{#if logged}}
+    <div class="site-content">
+        <form id="post-image" action="users/createPost" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <label>Title:</label><br/>
+                <input placeholder="Title" id="title" type="text" name="title"><br/><br/>
+                <label for="Description">Description:</label><br/>
+                <textarea placeholder="Enter description:" id="description" name="description" row="8"
+                          cols="30"></textarea>
+                <br/><br/>
+                <label>Upload photo:</label><br/><br/>
+                <div id="flash-message">
+                    {{#if (emptyObject messages)}}
+                        <div>{{messages.error}}</div><br/>
+                    {{/if}}
+                </div>
+                <input id="photo" type="file" accept="image/*" name="photo"><br/>
+            </fieldset>
+            <br/>
+
+            All posts must abide by the <a href="https://gph.is/1WNPRnv" target="_blank">Acceptable Use
+            Policy</a><br/><br/>
+            <input type="checkbox" id="checkbox" value="AUP" required>
+            <label for="accept">This post falls within the Acceptable Use Policy</label>
+            <br/><br/>
+            <input id="submit" type="Submit" value="Upload"><br/><br/>
+        </form>
+        <script src="public/js/post.js"></script>
+    </div>
+{{else}}
+    <div class="site-content">
+        <h2>Unauthorized Access</h2>
+        <h3>You must be <a href="/login">logged in</a> to access this</h3>
+    </div>
+<!--Force redirect to login page in case they miss the link-->
+    <script type="text/javascript">
+        window.onload = function () {
+            setTimeout(() => {
+                location.replace('/login');
+            }, 2500);
+        }
+    </script>
+{{/if}}
+
+

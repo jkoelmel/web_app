@@ -1,0 +1,52 @@
+<div class="site-content">
+    <form id="register" action="users/register" method="POST"
+          enctype="application/x-www-form-urlencoded">
+        <fieldset>
+            <legend>Account Info</legend>
+            <label>Create a username:</label><br/>
+            <input placeholder="Username" id="username" type="text" name="username" required><br/>
+            <label>Enter your email:</label><br/>
+            <input placeholder="Email" id="email" type="email" name="email" required><br/>
+            <label>Enter a password:</label><br/>
+            <input placeholder="Enter password" id="password1" type="password"
+                   name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="At least 8 characters and include uppercase, lowercase,
+                   and at least one number" required><br/>
+            <label>Confirm password:</label><br/>
+            <input placeholder="Confirm password" id="password2" type="password"
+                   name="password2" required><br/>
+            <input class="check" id="checkbox" type="checkbox">Show Password<br/>
+            <div id="message">
+                <h5>Password must contain the following:</h5>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+            <br/>
+            Already have an account? <a href="login">Login</a><br/><br/>
+            <input type="reset" value="Reset form"><br/>
+        </fieldset>
+        <br/>
+
+        <fieldset>
+            <legend>Verification</legend>
+            <input  class="check" type="checkbox" id="age" name="age" required>
+            <label for="age">I am at least 13 years of age</label>
+            <br/><br/>
+            All users must accept the <a href="https://cat-bounce.com" target="_blank">TOS</a> and
+            <a href="http://www.koalastothemax.com/" target="_blank">Privacy Rules</a><br/>
+            <input class="check" type="checkbox" id="accept" name="accept" required>
+            <label for="accept">I have read and agree to the TOS and Privacy Rules.</label><br/><br/>
+        </fieldset>
+        <br/>
+        <div id="flash-message">
+            {{#if (emptyObject messages)}}
+                <div>{{messages.error}}</div>
+            {{/if}}
+        </div>
+        <input id="submit" type="Submit" value="Submit"><br/> <br/>
+    </form>
+    <script src="public/js/registration.js"></script>
+    <script src="public/js/forms.js"></script>
+</div>

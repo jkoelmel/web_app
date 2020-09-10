@@ -1,0 +1,19 @@
+<nav>
+    <div><a href="/"><img class="logo" src="/public/images/site-logo.png"
+          alt="site-logo" width="50px" height="50px"></a></div>
+    {{#if logged}}
+    <div class="text"><a id="logout">Logout</a></div>
+    <div class="text"><a href="/postimage">New Post</a></div>
+    {{else}}
+    <div class ="text"><a href="/login">Login</a></div>
+    {{/if}}
+    <div class="text"><a href="/about">About</a></div>
+    <div class="text"><a href="mailto:jkoelmel1@mail.sfsu.edu" target="_blank">Contact</a></div>
+    <div>
+        <form id="search" role="search" class="search" name="search" action="/search" method="POST">
+            <input placeholder="Search Images" type="search" id="query"
+                   name="query" aria-label="Search Images">
+            <button id="searchButton">Search</button>
+        </form>
+    </div>
+</nav>
