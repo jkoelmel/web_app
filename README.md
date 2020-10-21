@@ -14,6 +14,6 @@
 2. Open web browser and navigate to localhost:3000 to ensure node is now running  
 
 ## Schema 
-1. Use the included SQL dump file in Workbench to generate schemas matching the ones in use by the application.  
+1. Use the included SQL script in Workbench/DataGrip to generate schemas matching the ones in use by the application.  
 
 
